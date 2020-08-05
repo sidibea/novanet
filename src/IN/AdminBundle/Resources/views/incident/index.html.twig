@@ -1,0 +1,93 @@
+{% extends "INAdminBundle::layout.html.twig" %}
+
+{% block breadcrumb %}
+    <div class="container-fluid">
+        <div class="row-fluid ">
+            <div class="span12">
+                <div class="primary-head">
+                    <h3 class="page-header">Gestions des incidents</h3>
+                    <ul class="top-right-toolbar">
+                        <li><a data-toggle="dropdown" class="dropdown-toggle blue-violate" href="#" data-original-title="Users"><i class="icon-user"></i></a>
+                        </li>
+                        <li><a href="#" class="green" data-original-title="Upload"><i class=" icon-upload-alt"></i></a></li>
+                        <li><a href="#" class="bondi-blue" data-original-title="Settings"><i class="icon-cogs"></i></a></li>
+                    </ul>
+                </div>
+                <ul class="breadcrumb">
+                    <li><a href="{{ path('in_admin_homepage') }}" class="icon-home"></a><span class="divider "><i class="icon-angle-right"></i></span></li>
+                    <li class="active">Liste des incidents</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="content-widgets">
+                <div>
+                    <div class="widget-header-block">
+                        <h4 class="widget-header"> Liste des sites  </h4>
+                    </div>
+                    <div>
+                        <table id="site_list" class="responsive table table-bordered tbl-paper-theme">
+                            <thead>
+                            <tr>
+
+                                <th width="150">Code</th>
+                                <th>Ticket créé par</th>
+                                <th>Nom du site</th>
+                                <th>Priorité</th>
+                                <th width="150">Arrivé Le</th>
+                                <th>Commentaire</th>
+                                <th>Description</th>
+                            </tr>
+                            </thead>
+                            <tbody id="site">
+                            {% for p in pagination %}
+                                <tr {% if p.priority == 1 %} style="background: #00A300; color: #fff !important;" {% elseif p.priority == 2 %} style="background: #e88a05; color: #fff !important;" {% elseif p.priority == 3 %} style="background: #e9322d; color: #fff !important; " {% endif %}>
+                                    <td><a style="color: #fff;" href="{{ path('incident_show', { 'id': p.id }) }}"><strong>{{ p.ticketCode }}</strong></a> </td>
+                                    <td>{{ p.createdBy }}</td>
+                                    <td>
+                                        {% if p.site != null %}
+                                            {{ p.site.siteName }}
+                                        {% else %}
+                                            {{ p.siteCanonical }}
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ p.priority }}</td>
+                                    <td>{{ p.occuredAt | date('d-m-Y H:i:s') }}</td>
+                                    <td>{{ p.comment }}</td>
+                                    <td>{{ p.description }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <div class="navigation">
+                            {{ knp_pagination_render(pagination) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block scripts %}
+    <!-- loading-overlay -->
+    <script src="//cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.6.0/src/loadingoverlay.min.js"></script>
+    <script>
+        $(function() {
+
+            var json;
+
+
+
+
+
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,3 @@
+site_ajax_list:
+  path:     /site/ajax
+  defaults: { _controller: "INAdminBundle:SiteAjax:list" }

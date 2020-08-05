@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<!-- Mirrored from www.lab.westilian.com/falgun-admin/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Jul 2020 12:23:17 GMT -->
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %} {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin Panel Template">
+    <meta name="author" content="Westilian: Kamrujaman Shohel">
+    <!-- styles -->
+    <link href="{{ asset('bundles/incore/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/incore/css/jquery.gritter.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/incore/css/bootstrap-responsive.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('bundles/incore/css/font-awesome.css') }}">
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="{{ asset('bundles/incore/css/font-awesome-ie7.min.css') }}">
+    <![endif]-->
+    <link href="{{ asset('bundles/incore/css/tablecloth.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/incore/css/styles.css') }}" rel="stylesheet">
+    <!--[if IE 7]>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/incore/css/ie/ie7.css') }}" />
+    <![endif]-->
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/incore/css/ie/ie8.css') }}" />
+    <![endif]-->
+    <!--[if IE 9]>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/incore/css/ie/ie9.css') }}" />
+    <![endif]-->
+    <link href='http://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
+    <!--fav and touch icons -->
+    <link rel="shortcut icon" href="ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+
+</head>
+<body onload="window.print()">
+<div class="profile-info">
+    <div class=" information-container">
+        <h4>{{ site.siteName }}  </h4>
+        <p>{{ site.streetAddress }} {{ site.quartier }} {{ site.district }}</p>
+        <p>Commentaire ici...</p>
+        <h4>Informations générales</h4>
+        <table style="font-size: 14px;" class="responsive table  table-bordered tbl-paper-theme">
+            <tr>
+                <td style="font-weight: bold">Code du site</td>
+                <td>{{ site.codeSite }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Nom du site</td>
+                <td>{{ site.siteName }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Type de transmission</td>
+                <td>{{ site.typeTrans }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Présence EDM ?</td>
+                <td>{{ site.presenceEdm }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold"> Type NRJ</td>
+                <td>{{ site.typeNRJ }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">G900</td>
+                <td>{{ site.g900 }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">G1800</td>
+                <td>{{ site.g1800 }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">U2100</td>
+                <td>{{ site.u2100 }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">L800</td>
+                <td>{{ site.l800 }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">L1800</td>
+                <td>{{ site.l1800 }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">4T6S</td>
+                <td>{{ site.t46s }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">TDD</td>
+                <td>{{ site.tdd }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Région</td>
+                <td>{{ site.district }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Cercle</td>
+                <td>{{ site.cercle }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Commune</td>
+                <td>{{ site.commune }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Quartier</td>
+                <td>{{ site.quartier }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Adresse</td>
+                <td style="font-weight: bold">{{ site.streetAddress }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Date de mise en service</td>
+                <td>{{ site.onAirDate | date('d-m-Y à H:i:s') }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Status opérationnel du site</td>
+                <td>{{ site.siteOperationalStatus }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Date de déplacement</td>
+                <td>{{ site.dateDeDeplacement }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Type de structure</td>
+                <td>{{ site.typeStructure }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Propriétaire de  la structure</td>
+                <td>{{ site.structureOwner }}</td>
+            </tr>
+
+            <tr>
+                <td style="font-weight: bold">Fabricant de la structure</td>
+                <td>{{ site.manufacturer }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Topologie du réseau</td>
+                <td>{{ site.NetwordTopology }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Raison si non disponible pour le partage</td>
+                <td>{{ site.reasonIfNotAvailableForSharing }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Statut de partage</td>
+                <td>{{ site.sharingStatus }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">KOUT</td>
+                <td>{{ site.kout }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Type pour la zone couverte</td>
+                <td>{{ site.typeOfCoveredArea }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Latitude décimal</td>
+                <td>{{ site.latitudeDecimal }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Longitude décimal</td>
+                <td>{{ site.longitudeDecimal }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Latidude DMS</td>
+                <td>{{ site.latitudeDms }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Longitude DMS</td>
+                <td>{{ site.longitudeDms }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold"> Typo</td>
+                <td>{{ site.typo }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Typo</td>
+                <td>{{ site.typo }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Fabricant de la tour</td>
+                <td>{{ site.toweManufacturer }}</td>
+            </tr>
+        </table>
+
+        <h4>Activities</h4>
+
+    </div>
+</div>
+
+<script src="{{ asset('bundles/incore/js/jquery.js') }}"></script>
+<script src="{{ asset('bundles/incore/js/jquery-ui-1.10.1.custom.min.js') }}"></script>
+<script src="{{ asset('bundles/incore/js/bootstrap.js') }}"></script>
+
+
+<script src="{{ asset('bundles/incore/js/custom.js') }}"></script>
+<script src="{{ asset('bundles/incore/js/respond.min.js') }}"></script>
+<script src="{{ asset('bundles/incore/js/ios-orientationchange-fix.js') }}"></script>

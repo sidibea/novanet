@@ -1,0 +1,20 @@
+in_admin_homepage:
+    path:     /
+    defaults: { _controller: INAdminBundle:Dashboard:index }
+in_core_site:
+    resource: "@INAdminBundle/Resources/config/routing/site.yml"
+    prefix:   /site
+in_core_site_ajax:
+    resource: "@INAdminBundle/Resources/config/routing/site-ajax.yml"
+    prefix:   /site-ajax
+in_core_incident:
+    resource: "@INAdminBundle/Resources/config/routing/incident.yml"
+    prefix:   /incident
+
+in_core_incident_ajax:
+    resource: "@INAdminBundle/Resources/config/routing/incident-ajax.yml"
+    prefix:   /incident-ajax
+in_core_ticket:
+    resource: "@INAdminBundle/Resources/config/routing/ticket.yml"
+    prefix:   /ticket
+

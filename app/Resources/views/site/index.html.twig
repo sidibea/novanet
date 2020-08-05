@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Sites list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Codesite</th>
+                <th>Typetrans</th>
+                <th>Presenceedm</th>
+                <th>Typenrj</th>
+                <th>G900</th>
+                <th>G1800</th>
+                <th>U2100</th>
+                <th>U900</th>
+                <th>L800</th>
+                <th>L1800</th>
+                <th>T46s</th>
+                <th>Tdd</th>
+                <th>Sitename</th>
+                <th>Quartier</th>
+                <th>District</th>
+                <th>Onairdate</th>
+                <th>Siteoperationalstatus</th>
+                <th>Sitededeplacement</th>
+                <th>Datededeplacement</th>
+                <th>Typestructure</th>
+                <th>Manufacturer</th>
+                <th>Networdtopology</th>
+                <th>Structureowner</th>
+                <th>Reasonifnotavailableforsharing</th>
+                <th>Sharingstatus</th>
+                <th>Streetaddress</th>
+                <th>Commune</th>
+                <th>Cercle</th>
+                <th>Kout</th>
+                <th>Typeofcoveredarea</th>
+                <th>Latitudedecimal</th>
+                <th>Longitudedecimal</th>
+                <th>Latitudedms</th>
+                <th>Longitudedms</th>
+                <th>Typo</th>
+                <th>Towemanufacturer</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for site in sites %}
+            <tr>
+                <td><a href="{{ path('site_show', { 'id': site.id }) }}">{{ site.id }}</a></td>
+                <td>{{ site.codeSite }}</td>
+                <td>{{ site.typeTrans }}</td>
+                <td>{{ site.presenceEdm }}</td>
+                <td>{{ site.typeNrj }}</td>
+                <td>{{ site.g900 }}</td>
+                <td>{{ site.g1800 }}</td>
+                <td>{{ site.u2100 }}</td>
+                <td>{{ site.u900 }}</td>
+                <td>{{ site.l800 }}</td>
+                <td>{{ site.l1800 }}</td>
+                <td>{{ site.t46s }}</td>
+                <td>{{ site.tdd }}</td>
+                <td>{{ site.siteName }}</td>
+                <td>{{ site.quartier }}</td>
+                <td>{{ site.district }}</td>
+                <td>{% if site.onAirDate %}{{ site.onAirDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ site.siteOperationalStatus }}</td>
+                <td>{{ site.siteDeDeplacement }}</td>
+                <td>{{ site.dateDeDeplacement }}</td>
+                <td>{{ site.typeStructure }}</td>
+                <td>{{ site.manufacturer }}</td>
+                <td>{{ site.NetwordTopology }}</td>
+                <td>{{ site.structureOwner }}</td>
+                <td>{{ site.reasonIfNotAvailableForSharing }}</td>
+                <td>{{ site.sharingStatus }}</td>
+                <td>{{ site.streetAddress }}</td>
+                <td>{{ site.commune }}</td>
+                <td>{{ site.cercle }}</td>
+                <td>{{ site.kout }}</td>
+                <td>{{ site.typeOfCoveredArea }}</td>
+                <td>{{ site.latitudeDecimal }}</td>
+                <td>{{ site.longitudeDecimal }}</td>
+                <td>{{ site.latitudeDMS }}</td>
+                <td>{{ site.longitudeDMS }}</td>
+                <td>{{ site.typo }}</td>
+                <td>{{ site.toweManufacturer }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('site_show', { 'id': site.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('site_edit', { 'id': site.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('site_new') }}">Create a new site</a>
+        </li>
+    </ul>
+{% endblock %}

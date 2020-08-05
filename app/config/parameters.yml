@@ -1,0 +1,12 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: novanet
+    database_user: root
+    database_password: null
+    mailer_transport: smtp
+    mailer_host: mail.malinova.tech
+    mailer_user: robot@malinova.tech
+    mailer_password: Malinova@2020
+    secret: ThisTokenIsNotSoSecretChangeIt

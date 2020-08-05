@@ -1,0 +1,3 @@
+incident_list_ajax:
+  path:     /list
+  defaults: { _controller: "INAdminBundle:IncidentAjax:list" }

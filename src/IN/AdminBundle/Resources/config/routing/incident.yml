@@ -1,0 +1,23 @@
+incident_index:
+    path:     /
+    defaults: { _controller: "INAdminBundle:Incident:index" }
+    methods:  GET
+
+incident_show:
+    path:     /{id}/show
+    defaults: { _controller: "INAdminBundle:Incident:show" }
+
+incident_new:
+    path:     /new
+    defaults: { _controller: "INAdminBundle:Incident:new" }
+    methods:  [GET, POST]
+
+incident_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "INAdminBundle:Incident:edit" }
+    methods:  [GET, POST]
+
+incident_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "INAdminBundle:Incident:delete" }
+    methods:  DELETE

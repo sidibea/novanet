@@ -1,0 +1,95 @@
+{% extends "INAdminBundle::layout.html.twig" %}
+
+{% block breadcrumb %}
+    <div class="container-fluid">
+        <div class="row-fluid ">
+            <div class="span12">
+                <div class="primary-head">
+                    <h3 class="page-header">Gestion des sites</h3>
+                    <ul class="top-right-toolbar">
+                        <li><a data-toggle="dropdown" class="dropdown-toggle blue-violate" href="#" data-original-title="Users"><i class="icon-user"></i></a>
+                        </li>
+                        <li><a href="#" class="green" data-original-title="Upload"><i class=" icon-upload-alt"></i></a></li>
+                        <li><a href="#" class="bondi-blue" data-original-title="Settings"><i class="icon-cogs"></i></a></li>
+                    </ul>
+                </div>
+                <ul class="breadcrumb">
+                    <li><a href="#" class="icon-home"></a><span class="divider "><i class="icon-angle-right"></i></span></li>
+                    <li><a href="#">Gestion des sites</a><span class="divider"><i class="icon-angle-right"></i></span></li>
+                    <li class="active">Listes des sites</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="content-widgets">
+                    <div>
+                        <div class="widget-header-block">
+                            <h4 class="widget-header"> Liste des sites  ({{ pagination.getTotalItemCount }})</h4>
+                        </div>
+                        <div>
+                            <table id="site_list" class="responsive table table-striped table-bordered tbl-paper-theme">
+                                <thead>
+                                <tr>
+
+                                    <th>
+                                        {{ knp_pagination_sortable(pagination, 'Code', 's.codeSite') }}
+                                    </th>
+                                    <th>
+                                        {{ knp_pagination_sortable(pagination, 'Nom', 's.siteName') }}
+
+                                    </th>
+                                    <th>
+                                        {{ knp_pagination_sortable(pagination, 'Type TRANS', 's.typeTrans') }}
+
+                                    </th>
+                                    <th>
+                                        {{ knp_pagination_sortable(pagination, 'EDM ?', 's.presenceEdm') }}
+
+                                    </th>
+                                    <th>
+                                        {{ knp_pagination_sortable(pagination, 'Region', 's.district') }}
+
+                                    </th>
+                                    <th>
+                                        {{ knp_pagination_sortable(pagination, 'Statut operationel', 's.siteOperationalStatus') }}
+
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody id="site">
+                                {% for site in pagination %}
+                                    <tr>
+                                        <td><a href="{{ path('site_show', { 'id': site.id }) }}">{{ site.codeSite }}</a> </td>
+                                        <td>{{ site.siteName }}</td>
+                                        <td>{{ site.typeTrans }}</td>
+                                        <td>{{ site.presenceEdm }}</td>
+                                        <td>{{ site.district }}</td>
+                                        <td>{{ site.siteOperationalStatus }}</td>
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                            <div class="navigation">
+                                {{ knp_pagination_render(pagination) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.6.0/src/loadingoverlay.min.js"></script>
+    <script>
+    </script>
+{% endblock %}

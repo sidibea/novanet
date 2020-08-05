@@ -1,0 +1,185 @@
+{% extends "INAdminBundle::layout.html.twig" %}
+
+{% block breadcrumb %}
+    <style>
+        .bg-danger{
+            background: #e9322d !important;
+        }
+    </style>
+    <div class="container-fluid">
+        <div class="row-fluid ">
+            <div class="span12">
+                <div class="primary-head">
+                    <h3 class="page-header">Gestions des incidents</h3>
+                    <ul class="top-right-toolbar">
+                        <li><a data-toggle="dropdown" class="dropdown-toggle blue-violate" href="#" data-original-title="Users"><i class="icon-user"></i></a>
+                        </li>
+                        <li><a href="#" class="green" data-original-title="Upload"><i class=" icon-upload-alt"></i></a></li>
+                        <li><a href="#" class="bondi-blue" data-original-title="Settings"><i class="icon-cogs"></i></a></li>
+                    </ul>
+                </div>
+                <ul class="breadcrumb">
+                    <li><a href="{{ path('in_admin_homepage') }}" class="icon-home"></a><span class="divider "><i class="icon-angle-right"></i></span></li>
+                    <li class="active">{{ incident.ticketCode }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span6">
+                <div class="content-widgets gray">
+                    <div class="widget-head {% if incident.priority == 1 %} green {% elseif incident.priority == 2 %} dark-yellow {% elseif incident.priority == 3 %} red {% endif %}">
+                        <h3>{{ incident.ticketCode }}</h3>
+                    </div>
+                    <div class="widget-container">
+                        <p>
+                            <span style=" text-decoration: underline;">
+                                <strong>
+                                    <span style="font-size: 15px; text-decoration: underline; ">Code Ticket:</span>
+                                </strong>
+                            </span>
+                            &nbsp;&nbsp;
+                            <span style="text-decoration-line: underline;">
+                              <strong>
+                                  <span style="font-size: 15px; ">{{ incident.ticketCode }}</span>
+                              </strong>
+                            </span>
+                        </p>
+                        <p>
+                            <span style="text-decoration-line: underline;">
+                                <strong><span style=""><br/></span></strong>
+                            </span>
+                        </p>
+                        <p>
+                            <span style="text-decoration-line: underline;">
+                                <strong><span style=""></span></strong>
+                            </span>
+                        </p>
+                        <p>
+                        <table cellpadding="9">
+                            <tbody>
+                                <tr class="ue-table-interlace-color-single firstRow">
+                                    <td width="272"  style="word-break: break-all;">
+                                    <strong>
+                                        <span style="text-decoration: none;">
+                                            <span style="text-decoration: none; font-size: 15px; ">Ticket Créer par: </span>
+                                        </span>
+                                    </strong>
+                                </td>
+                                <td width="272"  style="font-size: 15px;  word-break: break-all;">{{ incident.createdBy }}</td>
+                            </tr>
+                            <tr class="ue-table-interlace-color-double">
+                                <td width="272"  style="word-break: break-all;">
+                                    <strong><span style="text-decoration: none;"><span style="font-size: 15px;  text-decoration: none; ">Site concerné</span></span></strong>
+                                </td>
+                                <td width="272"  style="word-break: break-all;"><span style="font-size: 15px !important; text-transform: uppercase; ">{{ incident.site.siteName }}</span></td>
+                            </tr>
+                            <tr class="ue-table-interlace-color-single">
+                                <td width="272"  style="word-break: break-all;">
+                                    <strong>
+                                        <span style="font-size: 15px;  text-decoration: underline;">Arrivé Le</span>
+                                    </strong>
+                                </td>
+                                <td width="272"  style="word-break: break-all;">
+                                    <span style="font-size: 15px; ">{{ incident.occuredAt | date('d-m-Y H:i:s') }}</span>
+                                </td>
+                            </tr>
+                            <tr class="ue-table-interlace-color-double">
+                                <td width="272"  style="word-break: break-all;">
+                                    <strong>
+                                        <span style="text-decoration-line: underline; ">
+                                            <span style="font-size: 15px;">Ticket Crée le</span>
+                                        </span>
+                                    </strong>
+                                </td>
+                                <td width="272"  style="word-break: break-all; font-size: 15px;"><span style="">{{ incident.ticketCreatedAt | date('d-m-Y H:i:s') }}</span></td>
+                            </tr>
+                            <tr class="ue-table-interlace-color-single">
+                                <td width="272"  style="word-break: break-all;">
+                                    <strong>
+                                        <span style="text-decoration-line: underline; ">
+                                            <span style="font-size: 15px;">Priorité de l'incident</span>
+                                        </span>
+                                    </strong>
+                                </td>
+                                <td width="272"  style="word-break: break-all; "><span style="font-size: 15px;">3</span></td>
+                            </tr>
+                            <tr class="ue-table-interlace-color-double">
+                                <td width="272"  style="word-break: break-all;">
+                                    <strong>
+                                        <span style="text-decoration-line: underline; ">
+                                            <span style="font-size: 15px;">Site(s) impacté(s)</span>
+                                        </span>
+                                    </strong>
+                                </td>
+                                <td width="272"  style="word-break: break-all;">
+                                    <span style="font-size: 15px;">{{ incident.impacts }}</span>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                        <br/>
+                        </p>
+                        <p></p>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="span6">
+                <div class="content-widgets gray" style="font-size: 15px;">
+                    <div class="widget-head {% if incident.priority == 1 %} green {% elseif incident.priority == 2 %} bg-danger {% elseif incident.priority == 3 %} red {% endif %}">
+                        <h3>{{ incident.ticketCode }}</h3>
+                    </div>
+                    <div class="widget-container">
+                        <table cellpadding="15" cellspacing="0">
+                            <tr class="ue-table-interlace-color-single">
+                                <td width="272"  style="word-break: break-all;">
+                                    <strong>
+                                        <span style="text-decoration: none;">
+                                            <span style="text-decoration: none; ">Type de problème:</span>
+                                            <span style="text-decoration: none; ">&nbsp;</span>
+                                        </span>
+                                    </strong>
+                                </td>
+                                <td width="272" ><br/></td>
+                            </tr>
+                            <tr class="ue-table-interlace-color-double">
+                                <td width="272"  style="word-break: break-all;">
+                                    <strong>
+                                        <span style="text-decoration: none;">
+                                            <span style="text-decoration: none; ">Commentaire</span>
+                                        </span>
+                                    </strong>
+                                </td>
+                                <td width="272"  style="word-break: break-all;">
+                                    <span style="">
+                                        NodeB ID=11112, RNC ID=101, NodeB Name=415_MANANTALI_3G, Alarm Cause=Port of the NodeB unavailable   NeType: BSC6910 UMTS| NeLocation: MSC4| vendor: | neName: MSC4HWRNC1| alarmName: NodeB Unavailable| alarmLocation: NodeB ID=11112, RNC ID=101, NodeB Name=415_MANANTALI_3G, Alarm Cause=Port of the NodeB unavailable| appendInfo:
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="ue-table-interlace-color-single">
+                                <td width="272"  style="word-break: break-all;">
+                                    <strong>
+                                        <span style="text-decoration: none;">
+                                            <span style="text-decoration: none; ">Description</span>
+                                        </span>
+                                    </strong>
+                                </td>
+                                <td width="272"  style="word-break: break-all;">
+                                    <span style="">NodeB Unavailable@2020-08-01 00:40:12@415_MANANTALI_3G</span>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

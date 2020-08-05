@@ -1,0 +1,28 @@
+site_index:
+    path:     /
+    defaults: { _controller: "INAdminBundle:Site:index" }
+    methods:  GET
+
+site_show:
+    path:     /{id}/show
+    defaults: { _controller: "INAdminBundle:Site:show" }
+    methods:  GET
+site_print:
+    path:     /{id}/print
+    defaults: { _controller: "INAdminBundle:Site:print" }
+    methods:  GET
+
+site_new:
+    path:     /new
+    defaults: { _controller: "INAdminBundle:Site:new" }
+    methods:  [GET, POST]
+
+site_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "INAdminBundle:Site:edit" }
+    methods:  [GET, POST]
+
+site_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "INAdminBundle:Site:delete" }
+    methods:  DELETE

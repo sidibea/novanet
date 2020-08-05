@@ -1,0 +1,286 @@
+{% extends "INAdminBundle::layout.html.twig" %}
+
+{% block breadcrumb %}
+    <div class="container-fluid">
+        <div class="row-fluid ">
+            <div class="span12">
+                <div class="primary-head">
+                    <h3 class="page-header">Gestion des sites</h3>
+                    <ul class="top-right-toolbar">
+                        <li><a data-toggle="dropdown" class="dropdown-toggle blue-violate" href="#" data-original-title="Users"><i class="icon-user"></i></a>
+                        </li>
+                        <li><a href="#" class="green" data-original-title="Upload"><i class=" icon-upload-alt"></i></a></li>
+                        <li><a href="#" class="bondi-blue" data-original-title="Settings"><i class="icon-cogs"></i></a></li>
+                    </ul>
+                </div>
+                <ul class="breadcrumb">
+                    <li><a href="{{ path('in_admin_homepage') }}" class="icon-home"></a><span class="divider "><i class="icon-angle-right"></i></span></li>
+                    <li><a href="{{ path('site_index') }}">Gestion des sites</a><span class="divider"><i class="icon-angle-right"></i></span></li>
+                    <li class="active">{{ site.codeSite }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row-fluid ">
+            <div class="span12">
+                <div class="tab-widget">
+                    <ul class="nav nav-tabs" id="myTab1">
+                        <li class="active"><a href="#user"><i class="icon-user"></i> Informations Generales</a></li>
+                        <li class=""><a href="#post"><i class=" icon-file"></i> Incidents</a></li>
+                        <li><a href="#task"><i class=" icon-tasks"></i> PM </a></li>
+                        <li><a href="#task"><i class=" icon-tasks"></i> PLM </a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="user">
+                            <div class="span3">
+                                <div class="profile-thumb"> <img class="img-polaroid" src="http://placehold.it/140x140">
+                                    <ul class="list-item">
+                                        <li><a href="#"><i class="icon-pencil"></i> Modifier le site </a></li>
+                                        <li><a onclick="return confirm('Voulez-vous vraiment supprimer ce site ?')" href="{{ path('site_delete', { 'id': site.id }) }}"><i class="icon-picture"></i> Supprimer le site</a></li>
+                                        <li><a href="#"><i class="icon-cogs"></i> Déplacer le site</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="span9">
+                                <div class="profile-info">
+                                    <div class=" information-container">
+                                        <h4>{{ site.siteName }} <a href="{{ path('site_print', { 'id': site.id }) }}" class="btn btn-success right-align"><i class="icon-print"></i> </a> </h4>
+                                        <p>{{ site.streetAddress }} {{ site.quartier }} {{ site.district }}</p>
+                                        <p>Commentaire ici...</p>
+                                        <h4>Informations générales</h4>
+                                        <table style="font-size: 14px;" class="responsive table  table-bordered tbl-paper-theme">
+                                            <tr>
+                                                <td style="font-weight: bold">Code du site</td>
+                                                <td>{{ site.codeSite }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Nom du site</td>
+                                                <td>{{ site.siteName }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Type de transmission</td>
+                                                <td>{{ site.typeTrans }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Présence EDM ?</td>
+                                                <td>{{ site.presenceEdm }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold"> Type NRJ</td>
+                                                <td>{{ site.typeNRJ }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">G900</td>
+                                                <td>{{ site.g900 }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">G1800</td>
+                                                <td>{{ site.g1800 }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">U2100</td>
+                                                <td>{{ site.u2100 }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">L800</td>
+                                                <td>{{ site.l800 }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">L1800</td>
+                                                <td>{{ site.l1800 }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">4T6S</td>
+                                                <td>{{ site.t46s }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">TDD</td>
+                                                <td>{{ site.tdd }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Région</td>
+                                                <td>{{ site.district }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Cercle</td>
+                                                <td>{{ site.cercle }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Commune</td>
+                                                <td>{{ site.commune }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Quartier</td>
+                                                <td>{{ site.quartier }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Adresse</td>
+                                                <td style="font-weight: bold">{{ site.streetAddress }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Date de mise en service</td>
+                                                <td>{{ site.onAirDate | date('d-m-Y à H:i:s') }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Status opérationnel du site</td>
+                                                <td>{{ site.siteOperationalStatus }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Date de déplacement</td>
+                                                <td>{{ site.dateDeDeplacement }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Type de structure</td>
+                                                <td>{{ site.typeStructure }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Propriétaire de  la structure</td>
+                                                <td>{{ site.structureOwner }}</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td style="font-weight: bold">Fabricant de la structure</td>
+                                                <td>{{ site.manufacturer }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Topologie du réseau</td>
+                                                <td>{{ site.NetwordTopology }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Raison si non disponible pour le partage</td>
+                                                <td>{{ site.reasonIfNotAvailableForSharing }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Statut de partage</td>
+                                                <td>{{ site.sharingStatus }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">KOUT</td>
+                                                <td>{{ site.kout }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Type pour la zone couverte</td>
+                                                <td>{{ site.typeOfCoveredArea }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Latitude décimal</td>
+                                                <td>{{ site.latitudeDecimal }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Longitude décimal</td>
+                                                <td>{{ site.longitudeDecimal }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Latidude DMS</td>
+                                                <td>{{ site.latitudeDms }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Longitude DMS</td>
+                                                <td>{{ site.longitudeDms }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold"> Typo</td>
+                                                <td>{{ site.typo }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Typo</td>
+                                                <td>{{ site.typo }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold">Fabricant de la tour</td>
+                                                <td>{{ site.toweManufacturer }}</td>
+                                            </tr>
+                                        </table>
+
+                                        <h4>Activities</h4>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="post">
+                            <div class="post_list clearfix">
+                                <div class="post_block clearfix">
+                                    <h6><a href="#">Sed eu adipiscing nisi. Maecenas dapibus lacinia pretium. Praesent eget lectus ac odio euismod consequat. </a></h6>
+                                    <ul class="post_meta clearfix">
+                                        <li><span>Posted By:</span><a href="#">Joe Smith</a></li>
+                                        <li><span>Date:</span><a href="#">30th April 2012</a></li>
+                                        <li class="total_post"><span>Total Post: </span><a href="#">30</a></li>
+                                    </ul>
+                                    <div class="btn-group pull-left">
+                                        <a href="#" class="btn"><i class=" icon-edit"></i> Edit</a><a href="#" class="btn "><i class=" icon-remove"></i> Delete</a>
+                                    </div>
+                                    <div class="btn-group pull-right">
+                                        <a href="#" class="btn"><i class=" icon-remove-sign"></i> Reject</a><a href="#" class="btn "><i class=" icon-ok"></i> Approve</a>
+                                    </div>
+                                </div>
+                                <div class="post_block clearfix">
+                                    <h6><a href="#">Sed eu adipiscing nisi. Maecenas dapibus lacinia pretium. Praesent eget lectus ac odio euismod consequat. </a></h6>
+                                    <ul class="post_meta clearfix">
+                                        <li><span>Posted By:</span><a href="#">Joe Smith</a></li>
+                                        <li><span>Date:</span><a href="#">30th April 2012</a></li>
+                                        <li class="total_post"><span>Total Post: </span><a href="#">30</a></li>
+                                    </ul>
+                                    <div class="btn-group pull-left">
+                                        <a href="#" class="btn"><i class=" icon-edit"></i> Edit</a><a href="#" class="btn "><i class=" icon-remove"></i> Delete</a>
+                                    </div>
+                                    <div class="btn-group pull-right">
+                                        <a href="#" class="btn"><i class=" icon-remove-sign"></i> Reject</a><a href="#" class="btn "><i class=" icon-ok"></i> Approve</a>
+                                    </div>
+                                </div>
+                                <div class="post_block clearfix">
+                                    <h6><a href="#">Sed eu adipiscing nisi. Maecenas dapibus lacinia pretium. Praesent eget lectus ac odio euismod consequat. </a></h6>
+                                    <ul class="post_meta clearfix">
+                                        <li><span>Posted By:</span><a href="#">Joe Smith</a></li>
+                                        <li><span>Date:</span><a href="#">30th April 2012</a></li>
+                                        <li class="total_post"><span>Total Post: </span><a href="#">30</a></li>
+                                    </ul>
+                                    <div class="btn-group pull-left">
+                                        <a href="#" class="btn"><i class=" icon-edit"></i> Edit</a><a href="#" class="btn "><i class=" icon-remove"></i> Delete</a>
+                                    </div>
+                                    <div class="btn-group pull-right">
+                                        <a href="#" class="btn"><i class=" icon-remove-sign"></i> Reject</a><a href="#" class="btn "><i class=" icon-ok"></i> Approve</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="task">
+                            <ul class="task-list">
+                                <li class="done"><span class="task-check">
+									<input name="" type="checkbox" checked="" value="">
+									</span><a href="#">Etiam vulputate bibendum odio, vitae mollis urna rutrum id.</a></li>
+                                <li><span class="task-check">
+									<input name="" type="checkbox" value="">
+									</span><a href="#">Ut ac erat ac magna malesuada aliquam.</a></li>
+                                <li class="done"><span class="task-check">
+									<input name="" type="checkbox" checked="" value="">
+									</span><a href="#">Praesent scelerisque augue a augue lobortis id iaculis mi tincidunt.</a></li>
+                                <li><span class="task-check">
+									<input name="" type="checkbox" value="">
+									</span><a href="#">Phasellus tristique nulla at leo interdum pretium.</a></li>
+                                <li><span class="task-check">
+									<input name="" type="checkbox" value="">
+									</span><a href="#">Morbi tincidunt lacus et turpis fringilla in vehicula dolor semper.</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.6.0/src/loadingoverlay.min.js"></script>
+    <script>
+    </script>
+{% endblock %}

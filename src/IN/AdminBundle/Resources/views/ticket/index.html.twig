@@ -1,0 +1,99 @@
+{% extends "INAdminBundle::layout.html.twig" %}
+
+{% block breadcrumb %}
+    <div class="container-fluid">
+        <div class="row-fluid ">
+            <div class="span12">
+                <div class="primary-head">
+                    <h3 class="page-header">Gestions des tickets</h3>
+                    <ul class="top-right-toolbar">
+                        <li><a data-toggle="dropdown" class="dropdown-toggle blue-violate" href="#" data-original-title="Users"><i class="icon-user"></i></a>
+                        </li>
+                        <li><a href="#" class="green" data-original-title="Upload"><i class=" icon-upload-alt"></i></a></li>
+                        <li><a href="#" class="bondi-blue" data-original-title="Settings"><i class="icon-cogs"></i></a></li>
+                    </ul>
+                </div>
+                <ul class="breadcrumb">
+                    <li><a href="{{ path('in_admin_homepage') }}" class="icon-home"></a><span class="divider "><i class="icon-angle-right"></i></span></li>
+                    <li class="active">Liste des tickets</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="content-widgets">
+                    <div>
+                        <div class="widget-header-block">
+                            <h4 class="widget-header"> Liste des tickets  </h4>
+                        </div>
+                        <div>
+                            <table id="site_list" class="responsive table table-striped table-bordered tbl-paper-theme">
+                                <thead>
+                                <tr>
+
+                                    <th>Code</th>
+                                    <th>type</th>
+                                    <th>
+                                        Nom du site
+                                    </th>
+                                    <th>
+                                        Priorité
+                                    </th>
+                                    <th>
+                                        Créé par
+                                    </th>
+                                    <th>
+                                        Assigné A ?
+                                    </th>
+                                    <th>
+                                        Commentaire
+                                    </th>
+                                    <th>
+                                        Actions
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody id="site">
+                                {% for t in pagination %}
+                                    <tr>
+                                        <td>{{ t.codeTicket }}</td>
+                                        <td>{{ t.type }}</td>
+                                        <td>{{ t.site.siteName }}</td>
+                                        <td>{{ t.priorite }}</td>
+                                        <td>{{ t.createdBy.nom }}</td>
+                                        <td>{{ t.sendTo.nom }}</td>
+                                        <td>{{ t.note }}</td>
+                                        <td>
+                                            <a href="{{ path('ticket_edit', { 'id': t.id }) }}"></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block scripts %}
+    <!-- loading-overlay -->
+    <script src="//cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.6.0/src/loadingoverlay.min.js"></script>
+    <script>
+        $(function() {
+
+            var json;
+
+
+
+
+        });
+    </script>
+
+{% endblock %}

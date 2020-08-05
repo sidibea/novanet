@@ -1,0 +1,172 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Site</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ site.id }}</td>
+            </tr>
+            <tr>
+                <th>Codesite</th>
+                <td>{{ site.codeSite }}</td>
+            </tr>
+            <tr>
+                <th>Typetrans</th>
+                <td>{{ site.typeTrans }}</td>
+            </tr>
+            <tr>
+                <th>Presenceedm</th>
+                <td>{{ site.presenceEdm }}</td>
+            </tr>
+            <tr>
+                <th>Typenrj</th>
+                <td>{{ site.typeNrj }}</td>
+            </tr>
+            <tr>
+                <th>G900</th>
+                <td>{{ site.g900 }}</td>
+            </tr>
+            <tr>
+                <th>G1800</th>
+                <td>{{ site.g1800 }}</td>
+            </tr>
+            <tr>
+                <th>U2100</th>
+                <td>{{ site.u2100 }}</td>
+            </tr>
+            <tr>
+                <th>U900</th>
+                <td>{{ site.u900 }}</td>
+            </tr>
+            <tr>
+                <th>L800</th>
+                <td>{{ site.l800 }}</td>
+            </tr>
+            <tr>
+                <th>L1800</th>
+                <td>{{ site.l1800 }}</td>
+            </tr>
+            <tr>
+                <th>T46s</th>
+                <td>{{ site.t46s }}</td>
+            </tr>
+            <tr>
+                <th>Tdd</th>
+                <td>{{ site.tdd }}</td>
+            </tr>
+            <tr>
+                <th>Sitename</th>
+                <td>{{ site.siteName }}</td>
+            </tr>
+            <tr>
+                <th>Quartier</th>
+                <td>{{ site.quartier }}</td>
+            </tr>
+            <tr>
+                <th>District</th>
+                <td>{{ site.district }}</td>
+            </tr>
+            <tr>
+                <th>Onairdate</th>
+                <td>{% if site.onAirDate %}{{ site.onAirDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Siteoperationalstatus</th>
+                <td>{{ site.siteOperationalStatus }}</td>
+            </tr>
+            <tr>
+                <th>Sitededeplacement</th>
+                <td>{{ site.siteDeDeplacement }}</td>
+            </tr>
+            <tr>
+                <th>Datededeplacement</th>
+                <td>{{ site.dateDeDeplacement }}</td>
+            </tr>
+            <tr>
+                <th>Typestructure</th>
+                <td>{{ site.typeStructure }}</td>
+            </tr>
+            <tr>
+                <th>Manufacturer</th>
+                <td>{{ site.manufacturer }}</td>
+            </tr>
+            <tr>
+                <th>Networdtopology</th>
+                <td>{{ site.NetwordTopology }}</td>
+            </tr>
+            <tr>
+                <th>Structureowner</th>
+                <td>{{ site.structureOwner }}</td>
+            </tr>
+            <tr>
+                <th>Reasonifnotavailableforsharing</th>
+                <td>{{ site.reasonIfNotAvailableForSharing }}</td>
+            </tr>
+            <tr>
+                <th>Sharingstatus</th>
+                <td>{{ site.sharingStatus }}</td>
+            </tr>
+            <tr>
+                <th>Streetaddress</th>
+                <td>{{ site.streetAddress }}</td>
+            </tr>
+            <tr>
+                <th>Commune</th>
+                <td>{{ site.commune }}</td>
+            </tr>
+            <tr>
+                <th>Cercle</th>
+                <td>{{ site.cercle }}</td>
+            </tr>
+            <tr>
+                <th>Kout</th>
+                <td>{{ site.kout }}</td>
+            </tr>
+            <tr>
+                <th>Typeofcoveredarea</th>
+                <td>{{ site.typeOfCoveredArea }}</td>
+            </tr>
+            <tr>
+                <th>Latitudedecimal</th>
+                <td>{{ site.latitudeDecimal }}</td>
+            </tr>
+            <tr>
+                <th>Longitudedecimal</th>
+                <td>{{ site.longitudeDecimal }}</td>
+            </tr>
+            <tr>
+                <th>Latitudedms</th>
+                <td>{{ site.latitudeDMS }}</td>
+            </tr>
+            <tr>
+                <th>Longitudedms</th>
+                <td>{{ site.longitudeDMS }}</td>
+            </tr>
+            <tr>
+                <th>Typo</th>
+                <td>{{ site.typo }}</td>
+            </tr>
+            <tr>
+                <th>Towemanufacturer</th>
+                <td>{{ site.toweManufacturer }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('site_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('site_edit', { 'id': site.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

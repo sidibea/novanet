@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<!-- Mirrored from www.lab.westilian.com/falgun-admin/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Jul 2020 12:23:17 GMT -->
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %} {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin Panel Template">
+    <meta name="author" content="Westilian: Kamrujaman Shohel">
+    <!-- styles -->
+    <link href="{{ asset('bundles/incore/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/incore/css/jquery.gritter.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/incore/css/bootstrap-responsive.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('bundles/incore/css/font-awesome.css') }}">
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="{{ asset('bundles/incore/css/font-awesome-ie7.min.css') }}">
+    <![endif]-->
+    <link href="{{ asset('bundles/incore/css/tablecloth.css') }}" rel="stylesheet">
+    {% block stylesheets %} {% endblock %}
+
+    <link href="{{ asset('bundles/incore/css/styles.css') }}" rel="stylesheet">
+    <!--[if IE 7]>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/incore/css/ie/ie7.css') }}" />
+    <![endif]-->
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/incore/css/ie/ie8.css') }}" />
+    <![endif]-->
+    <!--[if IE 9]>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/incore/css/ie/ie9.css') }}" />
+    <![endif]-->
+    <link href='http://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
+    <!--fav and touch icons -->
+    <link rel="shortcut icon" href="ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+
+</head>
+<body>
+<div class="layout">
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse top-nav">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="{% if is_granted('ROLE_ADMIN') %} {{ path('in_admin_homepage') }}  {% endif %}">
+                    <img src="{{ asset('bundles/incore/images/logo.png') }}" width="50" height="50" alt="Ovanet">
+                </a>
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li style="font-size: 14px;" class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-signal"></i> Gestion des sites <b class="icon-angle-down"></b></a>
+                            <div class="dropdown-menu">
+                                <ul>
+                                    <li><a href="{{ path('site_index') }}"><i class="icon-list-alt"></i> Liste des sites </a></li>
+                                    <li><a href="{{ path('site_new') }}"><i class="icon-plus-sign"></i> Nouveau site </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li style="font-size: 14px;" class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-signal"></i> Gestion des incidents <b class="icon-angle-down"></b></a>
+                            <div class="dropdown-menu">
+                                <ul>
+                                    <li><a href="{{ path('incident_index') }}"><i class="icon-list-alt"></i> Liste des incidents </a></li>
+                                    <li><a href="{{ path('incident_new') }}"><i class="icon-plus-sign"></i> Nouvel incident </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li style="font-size: 14px;" class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-signal"></i> Gestion des tickets <b class="icon-angle-down"></b></a>
+                            <div class="dropdown-menu">
+                                <ul>
+                                    <li><a href="{{ path('ticket_index') }}"><i class="icon-list-alt"></i> Gestion des tickets </a></li>
+                                    <li><a href="{{ path('ticket_new') }}"><i class="icon-plus-sign"></i> Nouveau  ticket</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="btn-toolbar pull-right notification-nav">
+                    <div class="btn-group">
+                        <div class="dropdown">
+                            <a class="btn btn-notification dropdown-toggle" data-toggle="dropdown"><i class="icon-globe"><span class="notify-tip">30</span></i></a>
+                            <div class="dropdown-menu pull-right ">
+                                <span class="notify-h"> You have 20 notifications</span><a class="msg-container clearfix"><span class="notification-thumb"><img src="images/notify-thumb.png" width="50" height="50" alt="user-thumb"></span><span class="notification-intro"> In hac habitasse platea dictumst. Aliquam posuere quam in nul<span class="notify-time"> 3 Hours Ago </span></span></a><a class="msg-container clearfix"><span class="notification-thumb"><i class="icon-file"></i></span><span class="notification-intro"><strong>Files </strong>In hac habitasse platea dictumst. Aliquam posuere<span class="notify-time"> 8 Hours Ago </span></span></a><a class="msg-container clearfix"><span class="notification-thumb"><img src="images/user-thumb.png" width="50" height="50" alt="user-thumb"></span><span class="notification-intro"> In hac habitasse platea dictumst. Aliquam posuere<span class="notify-time"> 3 Days Ago </span></span></a><a class="msg-container clearfix"><span class="notification-thumb"><i class=" icon-envelope-alt"></i></span><span class="notification-intro"><strong>Message</strong> In hac habitasse platea dictumst. Aliquam posuere<span class="notify-time"> 2 Weeks Ago </span></span></a>
+                                <button class="btn btn-primary btn-large btn-block"> View All</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <div class="dropdown">
+                            <a class="btn btn-notification"><i class="icon-lock"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="leftbar leftbar-close clearfix">
+        <div class="admin-info clearfix">
+            <div class="admin-thumb">
+                <i class="icon-user"></i>
+            </div>
+            <div class="admin-meta">
+                <ul>
+                    <li class="admin-username">
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            {{ app.user.nom }}
+                        {% endif %}
+                    </li>
+                    <li><a href="#">Modifier Profile</a></li>
+                    <li><a href="">Voir Profile </a><a href="{{ path('fos_user_security_logout') }}"><i class="icon-lock"></i> Deconnexion</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="left-nav clearfix">
+            <div class="left-primary-nav">
+                <ul id="myTab">
+                    <li class="active"><a href="#main" class="icon-desktop" title="Dashboard"></a></li>
+                    <li><a href="#site" class=" icon-signal" title="Gestion des sites"></a></li>
+                </ul>
+                <ul>
+                    <li><a href="chat.html" class="icon-comments" title="Chat"></a></li>
+                    <li><a href="text-editor.html" class="icon-pencil" title="WYSIWYG editor"></a></li>
+                </ul>
+            </div>
+            <div class="responsive-leftbar">
+                <i class="icon-list"></i>
+            </div>
+            <div class="left-secondary-nav tab-content">
+                <div class="tab-pane active" id="main">
+                    <h4 class="side-head">Tableau de bord</h4>
+                    <div class="search-box">
+                        <div class="input-append input-icon">
+                            <input class="search-input" placeholder="Search..." type="text">
+                            <i class=" icon-search"></i>
+                            <button class="btn" type="button">Go!</button>
+                        </div>
+                    </div>
+                    <ul class="metro-sidenav clearfix">
+                        <li><span class="notify-tip">30</span><a href="#" class="brown"><i class="icon-user"></i><span>Contact</span></a></li>
+                        <li><a href="#" class="orange"><i class="icon-cogs"></i><span>Configuration</span></a></li>
+                        <li><a href="#" class=" magenta"><i class="icon-bar-chart"></i><span>Statistiques</span></a></li>
+                        <li><a href="#" class=" blue"><i class="icon-copy"></i><span>Documents</span></a></li>
+                    </ul>
+                </div>
+                <div class="tab-pane" id="site">
+                    <h4 class="side-head">Gestion des sites</h4>
+                    <ul id="nav" class="accordion-nav">
+                        <li><a href="{{ path('site_index') }}"><i class="icon-list-alt"></i> Liste des sites <span class="notify-tip">50</span></a></li>
+                        <li><a href="{{ path('site_new') }}"><i class="icon-plus-sign"></i> Nouveau site </a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="main-wrapper">
+        {% block breadcrumb %} {% endblock %}
+        {% block content %} {% endblock %}
+
+    </div>
+    <div class="copyright">
+        <p>
+            &copy; 2020 Malinova
+        </p>
+    </div>
+    <div class="scroll-top">
+        <a href="#" class="tip-top" title="Go Top"><i class="icon-double-angle-up"></i></a>
+    </div>
+</div>
+
+<!--============ javascript ===========-->
+<script src="{{ asset('bundles/incore/js/jquery.js') }}"></script>
+<script src="{{ asset('bundles/incore/js/jquery-ui-1.10.1.custom.min.js') }}"></script>
+<script src="{{ asset('bundles/incore/js/bootstrap.js') }}"></script>
+
+
+<script src="{{ asset('bundles/incore/js/jquery.tablesorter.min.js') }}"></script>
+<script src="{{ asset('bundles/incore/js/jquery.tablecloth.js') }}"></script>
+{% block pagescripts %} {% endblock %}
+
+<script src="{{ asset('bundles/incore/js/jquery.collapsible.js') }}"></script>
+<script src="{{ asset('bundles/incore/js/accordion.nav.js') }}"></script>
+<script src="{{ asset('bundles/incore/js/jquery.gritter.js') }}"></script>
+<script src="{{ asset('bundles/incore/js/tiny_mce/jquery.tinymce.js') }}"></script>
+<script src="{{ asset('bundles/incore/js/custom.js') }}"></script>
+<script src="{{ asset('bundles/incore/js/respond.min.js') }}"></script>
+<script src="{{ asset('bundles/incore/js/ios-orientationchange-fix.js') }}"></script>
+{% block scripts %}
+{% endblock %}
+</body>
+
+<!-- Mirrored from www.lab.westilian.com/falgun-admin/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Jul 2020 12:24:29 GMT -->
+</html>

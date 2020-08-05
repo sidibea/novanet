@@ -1,0 +1,93 @@
+<p>
+    <span style="color: rgb(255, 255, 255); text-decoration: underline;">
+        <strong>
+            <span style="color: rgb(255, 255, 255); text-decoration: underline; background-color: rgb(255, 0, 0);">Chèr utilisateur Novanet:</span>
+        </strong>
+    </span>
+    &nbsp;&nbsp;
+    <span style="text-decoration-line: underline;">
+        <strong><span style="background-color: rgb(255, 255, 0);">{{ ticket.codeTicket }}</span></strong>
+    </span>
+</p>
+<p>
+    <span style="text-decoration-line: underline;">
+        <strong><span style="background-color: rgb(255, 255, 0);"><br/></span></strong>
+    </span>
+</p>
+<p>
+    <span style="text-decoration-line: underline;">
+        <strong><span style="background-color: rgb(255, 255, 0);"></span></strong>
+    </span>
+</p>
+<p>
+<table>
+    <tbody>
+    <tr class="ue-table-interlace-color-single firstRow"><td width="272" valign="top" style="word-break: break-all;">
+            <strong>
+                <span style="text-decoration: none;">
+                    <span style="text-decoration: none; background-color: rgb(255, 255, 0);">Ticket Créer</span>
+                </span>
+            </strong>
+        </td>
+        <td width="272" valign="top" style="word-break: break-all;">{{ ticket.createdBy.nom }}</td>
+    </tr>
+    <tr class="ue-table-interlace-color-double">
+        <td width="272" valign="top" style="word-break: break-all;">
+            <strong><span style="text-decoration: none;"><span style="text-decoration: none; background-color: rgb(255, 255, 0);">Nom du site</span></span></strong>
+        </td>
+        <td width="272" valign="top" style="word-break: break-all;"><span style="background-color: rgb(255, 255, 255);">{{ticket.site.siteName}}</span></td>
+    </tr>
+    <tr class="ue-table-interlace-color-single">
+        <td width="272" valign="top" style="word-break: break-all;">
+            <strong>
+                <span style="background-color: rgb(255, 0, 0); color: rgb(255, 255, 255); text-decoration: underline;">Heure de génération du ticket</span>
+            </strong>
+        </td>
+        <td width="272" valign="top" style="word-break: break-all;"><span style="background-color: rgb(255, 255, 255);">{{ ticket.createdAt| date('d-m-Y H:i:s') }}</span></td>
+    </tr>
+
+    <tr class="ue-table-interlace-color-single">
+        <td width="272" valign="top" style="word-break: break-all;">
+            <strong>
+                <span style="text-decoration-line: underline; color: rgb(255, 255, 255);">
+                    <span style="background-color: rgb(255, 0, 0);">Priorité</span>
+                </span>
+            </strong>
+        </td>
+        <td width="272" valign="top" style="word-break: break-all;"><span style="background-color: rgb(255, 255, 255);">{{ ticket.priorite }}</span></td>
+    </tr>
+
+    <tr class="ue-table-interlace-color-double">
+        <td width="272" valign="top" style="word-break: break-all;">
+            <strong>
+                <span style="text-decoration: none;">
+                    <span style="text-decoration: none; background-color: rgb(255, 255, 0);">Note émise</span>
+                </span>
+            </strong>
+        </td>
+        <td width="272" valign="top" style="word-break: break-all;">
+            <span style="background-color: rgb(255, 255, 255);">
+                {{ ticket.note }}
+            </span>
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+<br/>
+</p>
+<p></p>
+<p>
+    <span style="color: rgb(255, 255, 255); background-color: rgb(0, 176, 80);">
+        <strong>
+            <span style="color: rgb(255, 255, 255); text-decoration: none;">Vers un Mali qui innove.</span>
+        </strong>
+    </span>
+</p>
+<p>
+    <span style="background-color: rgb(255, 255, 255); color: rgb(255, 0, 0); font-size: 11px;">
+        <strong>
+            <span style="color: rgb(255, 0, 0); background-color: rgb(255, 255, 255); text-decoration: none;">Remarque: ne répondez pas à cet e-mail car il est envoyé automatiquement par le système Novanet. Pour tout problème avec ce outil, veuillez contacter votre administrateur Novanet</span>
+        </strong>
+    </span>
+</p>

@@ -1,0 +1,109 @@
+{% extends "INAdminBundle::layout.html.twig" %}
+{% block stylesheets %}
+    <link href="{{ asset('bundles/incore/css/chosen.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="container-fluid">
+        <div class="row-fluid ">
+            <div class="span12">
+                <div class="primary-head">
+                    <h3 class="page-header">Gestions des tickets</h3>
+                    <ul class="top-right-toolbar">
+                        <li><a data-toggle="dropdown" class="dropdown-toggle blue-violate" href="#" data-original-title="Users"><i class="icon-user"></i></a>
+                        </li>
+                        <li><a href="#" class="green" data-original-title="Upload"><i class=" icon-upload-alt"></i></a></li>
+                        <li><a href="#" class="bondi-blue" data-original-title="Settings"><i class="icon-cogs"></i></a></li>
+                    </ul>
+                </div>
+                <ul class="breadcrumb">
+                    <li><a href="{{ path('in_admin_homepage') }}" class="icon-home"></a><span class="divider "><i class="icon-angle-right"></i></span></li>
+                    <li class="active">Nouveau ticket</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="content-widgets gray">
+                    <div class="widget-head blue">
+                        <h3>Générer nouveau ticket</h3>
+                    </div>
+                    <div class="widget-container">
+                        {{ form_start(form, {'attr': { 'class' : 'form-horizontal' }}) }}
+
+                        {# Les erreurs générales du formulaire. #}
+                        {{ form_errors(form) }}
+                        <div class="control-group col-md-12">
+                            <label class="control-label">Site concerné</label>
+
+                            <div class="controls">
+                                {{ form_widget(form.site, {'attr': {'class': 'chzn-select form-control', 'tabindex': '-1', 'style': 'display: none', 'data-placeholder': 'Choisissez un site' }}) }}
+                            </div>
+                        </div>
+                            <div class="control-group">
+                                <label class="control-label">Type de ticket</label>
+
+                                <div class="controls">
+                                    {{ form_widget(form.type, {'attr': {'class': 'form-control' }}) }}
+                                </div>
+                            </div>
+                        <div class="control-group">
+                            <label class="control-label">Assigner à </label>
+
+                            <div class="controls">
+                                {{ form_widget(form.sendTo, {'attr': {'class': 'form-control' }}) }}
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Priorité</label>
+
+                            <div class="controls">
+                                {{ form_widget(form.priorite, {'attr': {'class': 'form-control' }}) }}
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Note</label>
+
+                            <div class="controls">
+                                {{ form_widget(form.note, {'attr': {'class': 'form-control' }}) }}
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-info"><i class="icon-upload-alt"></i> Enregistrer</button>
+                            <button type="reset" class="btn btn-danger">Annuler</button>
+                        </div>
+
+                        {{ form_rest(form) }}
+
+                        {# Fermeture de la balise <form> du formulaire HTML #}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block pagescripts %}
+    <script src="{{ asset('bundles/incore/js/chosen.jquery.js') }}"></script>
+{% endblock %}
+{% block scripts %}
+    <!-- loading-overlay -->
+    <script>
+        $(function() {
+
+            $(".chzn-select").chosen();
+
+
+
+
+
+        });
+    </script>
+
+{% endblock %}
